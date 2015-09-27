@@ -1,23 +1,163 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1348.17">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px Courier; color: #eeeb82; -webkit-text-stroke: #eeeb82; background-color: #3c3c3c}
-    span.s1 {font-kerning: none}
-  </style>
+  <title>Random Brain</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Random Brain">
+  <meta name="author" content="Martin Polacek">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;h1&gt;Hello World&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">&lt;p&gt;I'm hosted with GitHub Pages.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Random Brain</h1>
+    <h2>application to test the randomness of the mind</h2>
+    <p>Martin Polacek<br/>PhD student, physics</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Brief introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <!--1. Description of the program, user guide-->
+
+<ol>
+<li>The randomness of sequences produced by computer is an old an fascinating problem.</li>
+<li>Computers usually can produce only the pseudo-random sequence. These days there are special hardware components that can produce truly random numbers by the use of quantum mechanics.</li>
+<li>The question whether brain could produce really random sequence is fascinating because it could have deep philosophical meanings. Is the brain also somehow quantum?...</li>
+<li>This project was motivated by author&#39;s interest in the above questions.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Technical details</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Description of the program, user guide</h3>
+
+<ol>
+<li>Fill out the numerical inputs called &quot;Numerical Input 1&quot; to &quot;Numerical Input 10&quot; by a Natural numbers.</li>
+<li>Each column should contain one continuous string of numerals.</li>
+<li>The order of each numeral should be of the order of \(10^8\).</li>
+<li>Even if the sequence is not all numerical, i.e. there are some incorrect characters, like letters. The program will later disregard non-numerical ones and notify the user.</li>
+<li>After filling up all the input lines. User should press the GO! button.</li>
+<li>The histogram of the numerical sequence entered is shown in the same windows. </li>
+<li>The statistics is shown in the separate windows called &quot;Summary&quot;.</li>
+<li>For the users convenience there is also the section &quot;Documentation&quot;.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Technical details</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Description of the program, estimation of randomness</h3>
+
+<ol>
+<li>The randomness of the finite sequence is theoretically described by the &quot;Kolmogorov complexity&quot;</li>
+<li>Briefly, the &quot;Kolmogorov complexity&quot; with respect to some programming language <strong>p</strong> is the length of the smallest program that reproduces the sequence</li>
+<li>To find the Kolmogorov complexity is an NP hard, unless \(P=NP\).</li>
+<li>We estimate the randomness of the sequence by easier to calculate \(\chi^2\) test.</li>
+<li>The p values are compared at the standard \(0.05\) level.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example of Chi square distribution</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- seq(0, 10, length=100)
+hx &lt;- dchisq(x,df=5)
+plot(x, hx, type=&quot;l&quot;, lty=2, xlab=&quot;x value&quot;,
+    ylab=&quot;Density&quot;, main=&quot;density of Chi square distribution for 5 deof.&quot;)
+</code></pre>
+
+<h2><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Brief introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Technical details'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Technical details'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example of Chi square distribution'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
 </body>
-</html>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
